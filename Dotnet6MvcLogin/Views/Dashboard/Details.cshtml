@@ -1,0 +1,55 @@
+﻿@model Dotnet6MvcLogin.Models.DTO.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div>
+    <h4>Bid Details</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">Product Name</dt>
+                <dd class="col-sm-8">@Model.ProductData.Name</dd>
+
+                <dt class="col-sm-4">Product Description</dt>
+                <dd class="col-sm-8">@Model.ProductData.Description</dd>
+
+                <dt class="col-sm-4">Application Number</dt>
+                <dd class="col-sm-8">@Model.FormData.ApplicationNumber</dd>
+
+                <dt class="col-sm-4">First Name</dt>
+                <dd class="col-sm-8">@Model.FormData.FirstName</dd>
+
+                <dt class="col-sm-4">Last Name</dt>
+                <dd class="col-sm-8">@Model.FormData.LastName</dd>
+
+                <dt class="col-sm-4">Submitted Date</dt>
+                <dd class="col-sm-8">@Model.FormData.SubmittedDate</dd>
+
+                <dt class="col-sm-4">End Date</dt>
+                <dd class="col-sm-8">@Model.FormData.EndDate</dd>
+
+                <dt class="col-sm-4">Bid Price</dt>
+                <dd class="col-sm-8">@Model.FormData.productPrice</dd>
+
+                <dt class="col-sm-4">Status</dt>
+                <dd class="col-sm-8">@Model.FormData.Status</dd>
+
+                <!-- Add more fields from the ApplicationForm model as needed -->
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <img src="data:@Model.ProductData.ImageMimeType;base64,@Convert.ToBase64String(Model.ProductData.ImageData)" height="200px" width="200px" alt="@Model.ProductData.Name" />
+        </div>
+    </div>
+    @if (Model.FormData.Status == "Verified")
+    {
+        <a href="https://esewa.com.np/#/home"> <button>Payment</button></a>
+    }
+</div>
+<div>
+    
+</div>

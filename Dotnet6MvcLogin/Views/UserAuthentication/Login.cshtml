@@ -1,0 +1,125 @@
+﻿@model Dotnet6MvcLogin.Models.DTO.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>login</title>
+        
+<style>
+    body{
+        margin:0;
+        padding:0;
+      
+    }
+
+form {
+  border: 3px solid #f1f1f1;
+  width:60%;
+  margin:auto;
+  margin-top:10%;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #aa048b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.msg{
+  padding: 0px;
+}
+
+
+.err{
+    color:red;
+}
+/*a{
+    text-decoration:none;
+    color: black;
+    font-size:larger;
+}
+nav{
+    display:block;
+    background-color:grey;
+    padding:30px;
+}*/
+        /* Navbar styles */
+        .navbar {
+            background-color: #f8f8f8; /* Set your desired background color */
+            border: 1px solid #ddd; /* Add a border if needed */
+            border-radius: 4px; /* Add border-radius for rounded corners */
+            padding: 10px 0; /* Adjust padding as needed */
+            margin:0px;
+
+        }
+
+        /* Navbar brand styles */
+        .navbar-brand {
+            font-size: 24px; /* Set your desired font size */
+            font-weight: bold; /* Set your desired font weight */
+            color: #333; /* Set your desired text color */
+            text-decoration: none; /* Remove underlines */
+            padding:20px
+        }
+    </style>
+ 
+</head>
+<body>
+    <nav class="navbar navbar-default">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BIDiT</a>
+            </div>
+  
+    </nav>
+<form asp-action="Login" method="post">
+  
+  <div class="container">
+    <label asp-for="Username"><b>Username</b></label>
+    <input type="text" asp-for="Username" placeholder="Enter Username">
+            <div class="msg">
+            <span class="err" asp-validation-for="Username"></span>
+            </div>
+
+            
+
+    <label asp-for="Password"><b>Password</b></label>
+   <input  type="password" asp-for="Password" placeholder="Enter Password">
+            <div class="msg">
+            <span asp-validation-for="Password" class="err"></span>
+            </div>
+
+
+    @if(TempData["msg"]!=null){
+                <div class="msg">@TempData["msg"]</div>
+    }
+
+    <button type="submit">Login</button>
+    <a class="text-alert" href="/UserAuthentication/Registration">Not a user? Signup</a>
+  </div>
+</form>
+
+</body>
+</html>

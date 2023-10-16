@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Dotnet6MvcLogin.Models.DTO.ApplicationForm>
+
+@{
+    ViewData["Title"] = "Display";
+}
+
+<h3>Dashboard</h3>
+<hr/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Application Number
+            </th>
+          
+            <th>
+                Submitted Date
+            </th>
+            <th>
+                EndDate
+            </th>
+            <th>
+              Product Id
+            </th>
+            <th>
+               Bid Price        
+            </th>
+            <th>
+               Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationNumber)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmittedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                    
+                    @Html.ActionLink("Details", "Details",  new { id = item.ApplicationNumber, productId = item.productId }) |
+                    @Html.ActionLink("Delete", "Delete",  new { id = item.ApplicationNumber })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

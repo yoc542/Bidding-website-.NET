@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Dotnet6MvcLogin.Models.DTO.Products>
+
+@{
+    ViewData["Title"] = "ViewProducts";
+}
+
+<h3>All Products</h3>
+<hr/>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <img src="data:@item.ImageMimeType;base64,@Convert.ToBase64String(item.ImageData)" height="260px" width="260px" class="card-img-top" alt="@item.Name">
+                <div class="card-body">
+                    <h4 style="font:bolder">@item.Name</h4>
+                    
+                    <p class="card-text">@item.Description</p>
+                    <a href="@Url.Action("Bid", new { id = item.Id })" class="btn btn-primary">Bid</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
